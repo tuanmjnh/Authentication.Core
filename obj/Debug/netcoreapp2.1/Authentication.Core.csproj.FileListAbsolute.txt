@@ -1,0 +1,12 @@
+D:\Applications\Vinaphone\Authentication.Core\bin\Debug\netcoreapp2.1\Authentication.Core.deps.json
+D:\Applications\Vinaphone\Authentication.Core\bin\Debug\netcoreapp2.1\Authentication.Core.dll
+D:\Applications\Vinaphone\Authentication.Core\bin\Debug\netcoreapp2.1\Authentication.Core.pdb
+D:\Applications\Vinaphone\Authentication.Core\obj\Debug\netcoreapp2.1\Authentication.Core.csproj.CoreCompileInputs.cache
+D:\Applications\Vinaphone\Authentication.Core\obj\Debug\netcoreapp2.1\Authentication.Core.AssemblyInfoInputs.cache
+D:\Applications\Vinaphone\Authentication.Core\obj\Debug\netcoreapp2.1\Authentication.Core.AssemblyInfo.cs
+D:\Applications\Vinaphone\Authentication.Core\obj\Debug\netcoreapp2.1\Authentication.Core.dll
+D:\Applications\Vinaphone\Authentication.Core\obj\Debug\netcoreapp2.1\Authentication.Core.pdb
+D:\Applications\Vinaphone\Authentication.Core\bin\Debug\netcoreapp2.1\TM.Core.dll
+D:\Applications\Vinaphone\Authentication.Core\bin\Debug\netcoreapp2.1\TM.Core.pdb
+D:\Applications\Vinaphone\Authentication.Core\obj\Debug\netcoreapp2.1\Authentication.Core.csproj.CopyComplete
+D:\Applications\Vinaphone\Authentication.Core\obj\Debug\netcoreapp2.1\Authentication.Core.csprojAssemblyReference.cache
