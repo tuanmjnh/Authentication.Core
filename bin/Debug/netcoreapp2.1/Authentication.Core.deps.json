@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "174396678c50cc3e5a4a8e2c9128e10f1aabc446"
+    "signature": "31b535319fac3c0724fc40ec89c7e27b24b4a9f1"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,7 +9,6 @@
       "Authentication.Core/1.0.0": {
         "dependencies": {
           "Dapper": "1.50.4",
-          "Dapper.Contrib": "1.50.4",
           "TM.Core": "1.0.0"
         },
         "runtime": {
@@ -26,14 +25,19 @@
           "lib/netstandard2.0/Dapper.dll": {}
         }
       },
-      "Dapper.Contrib/1.50.4": {
+      "DapperExtensions.DotnetCore/1.0.1": {
         "dependencies": {
           "Dapper": "1.50.4",
           "Microsoft.CSharp": "4.5.0-preview2-26406-04",
-          "System.Reflection.Emit": "4.3.0"
+          "System.Collections": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Numerics": "4.3.0",
+          "System.Text.Encoding.Extensions": "4.3.0",
+          "System.Threading": "4.3.0"
         },
         "runtime": {
-          "lib/netstandard2.0/Dapper.Contrib.dll": {}
+          "lib/netstandard1.6/DapperExtensions.DotnetCore.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.4": {
@@ -1789,6 +1793,17 @@
           }
         }
       },
+      "Microsoft.Win32.SystemEvents/4.5.0-rc1": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll": {
+            "rid": "win",
+            "assetType": "runtime"
+          }
+        }
+      },
       "Newtonsoft.Json/11.0.2": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -1964,6 +1979,11 @@
             "rid": "win-x86",
             "assetType": "native"
           }
+        }
+      },
+      "SharpZipLib/1.0.0-alpha2": {
+        "runtime": {
+          "lib/netstandard1.3/ICSharpCode.SharpZipLib.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -2184,6 +2204,24 @@
       "System.Diagnostics.Tracing/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Drawing.Common/4.5.0-rc1": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "4.5.0-rc1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime"
+          }
         }
       },
       "System.Dynamic.Runtime/4.3.0": {
@@ -3005,12 +3043,14 @@
       "TM.Core/1.0.0": {
         "dependencies": {
           "Dapper": "1.50.4",
-          "Dapper.Contrib": "1.50.4",
+          "DapperExtensions.DotnetCore": "1.0.1",
           "Microsoft.AspNetCore.App": "2.1.0-preview2-final",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.0-preview2-final",
           "Microsoft.AspNetCore.Mvc": "2.1.0-preview2-final",
           "Microsoft.AspNetCore.Session": "2.1.0-preview2-final",
           "Oracle.ManagedDataAccess.Core": "2.12.0-beta2",
+          "SharpZipLib": "1.0.0-alpha2",
+          "System.Drawing.Common": "4.5.0-rc1",
           "System.IO.FileSystem.AccessControl": "4.5.0-rc1"
         },
         "runtime": {
@@ -3032,12 +3072,12 @@
       "path": "dapper/1.50.4",
       "hashPath": "dapper.1.50.4.nupkg.sha512"
     },
-    "Dapper.Contrib/1.50.4": {
+    "DapperExtensions.DotnetCore/1.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-2RBJJgOMzyZuD4LdcfrqGGZ005IppwOwo0JFlntZ0S0J/d69I6ehiYwiL4SyLE6mTBrB17uUZPIM67KO3GFEpw==",
-      "path": "dapper.contrib/1.50.4",
-      "hashPath": "dapper.contrib.1.50.4.nupkg.sha512"
+      "sha512": "sha512-owabAX9m4fPaOFea8lFRmhrVQIfRjzE2q26urfLroRdrTkn52yiUXHtJXqOeFHlcwwvb/Y1akEVDtVNBLNO0Pg==",
+      "path": "dapperextensions.dotnetcore/1.0.1",
+      "hashPath": "dapperextensions.dotnetcore.1.0.1.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.4": {
       "type": "package",
@@ -4159,6 +4199,13 @@
       "path": "microsoft.win32.registry/4.5.0-preview2-26406-04",
       "hashPath": "microsoft.win32.registry.4.5.0-preview2-26406-04.nupkg.sha512"
     },
+    "Microsoft.Win32.SystemEvents/4.5.0-rc1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BtWdrDgn1cnGAVg07H39HQCYMM73vGB+oD4YG1ZfogVb31WLRfUCSpmuaGEIFQ3KiKe7n6Mehh5N3gcnuxYv6Q==",
+      "path": "microsoft.win32.systemevents/4.5.0-rc1",
+      "hashPath": "microsoft.win32.systemevents.4.5.0-rc1.nupkg.sha512"
+    },
     "Newtonsoft.Json/11.0.2": {
       "type": "package",
       "serviceable": true,
@@ -4327,6 +4374,13 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
+    "SharpZipLib/1.0.0-alpha2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ndshrRoIzWdvoHr5ncGvSp3p/At+H2l4nT4bfWgPB0VU39TOT5/6uS6XbkO9N95Y8quO5RgLMiEBO3M0nq4pXw==",
+      "path": "sharpziplib/1.0.0-alpha2",
+      "hashPath": "sharpziplib.1.0.0-alpha2.nupkg.sha512"
+    },
     "System.AppContext/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -4487,6 +4541,13 @@
       "sha512": "sha512-rswfv0f/Cqkh78rA5S8eN8Neocz234+emGCtTF3lxPY96F+mmmUen6tbn0glN6PMvlKQb9bPAY5e9u7fgPTkKw==",
       "path": "system.diagnostics.tracing/4.3.0",
       "hashPath": "system.diagnostics.tracing.4.3.0.nupkg.sha512"
+    },
+    "System.Drawing.Common/4.5.0-rc1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-G7UU+j2Le7+LomBKCs8tYU8UHo2FKFcsiet92YhtK9/nU0tArYHQGvMSpWG+xZD/lvCX/dPgc3M6D4SnJifnFg==",
+      "path": "system.drawing.common/4.5.0-rc1",
+      "hashPath": "system.drawing.common.4.5.0-rc1.nupkg.sha512"
     },
     "System.Dynamic.Runtime/4.3.0": {
       "type": "package",

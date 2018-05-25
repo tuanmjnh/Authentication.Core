@@ -4,58 +4,57 @@ using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using TM.Core.Cookies;
+using TM.Core.Helper;
 namespace Authentication.Core {
     public class Auth {
-        private const string KeyAuth = "Authentication";
-        private const string KeyRoles = "Roles";
-        private const string KeyAllowRoles = "AllowRoles";
+        private const string SessionAuth = "Authentication";
+        private const string SessionRoles = "Roles";
+        private const string SessionAllowRoles = "AllowRoles";
         public const string API = "API";
         //private static Models.Users AuthAccount;
+        public static Users User;
         private readonly IHttpContextAccessor _httpContextAccessor;
         public Auth(IHttpContextAccessor httpContextAccessor) {
             _httpContextAccessor = httpContextAccessor;
         }
-        public static void SetAuth(Users Users, List<RolesAcess> Roles = null, List<RolesAcess> AllowRoles = null) {
+        public Users SetAuth(Users Users, List<RolesAcess> Roles = null, List<RolesAcess> AllowRoles = null) {
             try {
-                var options = new CookieOptions() { Expires = DateTime.Now.AddMinutes(30), HttpOnly = true };
-                TM.Core.HttpContext.Current.Http.Response.Cookies.Set(KeyAuth, Users, options);
-                TM.Core.HttpContext.Current.Http.Response.Cookies.Set(KeyRoles, Roles, options);
-                TM.Core.HttpContext.Current.Http.Response.Cookies.Set(KeyAllowRoles, AllowRoles, options);
+                _httpContextAccessor.HttpContext.Session.Set(SessionAuth, Users);
+                _httpContextAccessor.HttpContext.Session.Set(SessionRoles, Roles);
+                _httpContextAccessor.HttpContext.Session.Set(SessionAllowRoles, AllowRoles);
+                return Users;
             } catch (Exception) { throw; }
         }
-        public static Users AuthUser {
+        public Users AuthUser {
             get {
                 try {
                     //return Newtonsoft.Json.JsonConvert.DeserializeObject<Users>(TMAppContext.Http.Session.Get<string>(SessionAuth));
-                    return TM.Core.HttpContext.Current.Http.Request.Get<Users>(KeyAuth);
+                    return _httpContextAccessor.HttpContext.Session.Get<Users>(SessionAuth);
                 } catch (Exception) { return null; }
             }
         }
-        public static List<RolesAcess> AuthRoles {
+        public List<RolesAcess> AuthRoles {
             get {
                 try {
                     //return Newtonsoft.Json.JsonConvert.DeserializeObject<List<RolesAcess>>(TMAppContext.Http.Session.Get<string>(SessionRoles));
-                    return TM.Core.HttpContext.Current.Http.Request.Get<List<RolesAcess>>(KeyRoles);
+                    return _httpContextAccessor.HttpContext.Session.Get<List<RolesAcess>>(SessionRoles);
                 } catch (Exception) { return null; }
             }
         }
-        public static List<RolesAcess> AuthAllowRoles {
+        public List<RolesAcess> AuthAllowRoles {
             get {
                 try {
                     //return Newtonsoft.Json.JsonConvert.DeserializeObject<List<RolesAcess>>(TMAppContext.Http.Session.Get<string>(SessionAllowRoles));
-                    return TM.Core.HttpContext.Current.Http.Request.Get<List<RolesAcess>>(KeyAllowRoles);
+                    return _httpContextAccessor.HttpContext.Session.Get<List<RolesAcess>>(SessionAllowRoles);
                 } catch (Exception) { return null; }
             }
         }
-        public static bool isAuth {
+        public bool isAuth {
             get {
-                try {
-                    //var a = TM.Core.Helper.TMAppContext.HttpHelper.HttpContext.Session.Get<string>("Authentication");
-                    if (TM.Core.HttpContext.Current.Http.Request.Get<Users>(KeyAuth) != null)
-                        return true;
-                    return false;
-                } catch (Exception) { return false; }
+                //var a = TM.Core.Helper.TMAppContext.HttpHelper.HttpContext.Session.Get<string>("Authentication");
+                if (_httpContextAccessor.HttpContext.Session.Get<Users>(SessionAuth) != null)
+                    return true;
+                return false;
             }
         }
         //public static Models.Users GetAuth()
@@ -63,13 +62,13 @@ namespace Authentication.Core {
         //    return Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Users>(AppHttpContext.Current.Session.Get<string>(SessionAuth));
         //    //return AuthAccount;
         //}
-        public static bool inRoles(string[] r) {
+        public bool inRoles(string[] r) {
             if (r.Contains(AuthUser.roles))
                 return true;
             return false;
         }
-        public static void Logout() {
-            try { TM.Core.HttpContext.Current.Http.Response.Remove(KeyAuth); } catch (Exception) { throw; }
+        public void Logout() {
+            try { _httpContextAccessor.HttpContext.Session.Remove(SessionAuth); } catch (Exception) { throw; }
         }
         private static System.Collections.Generic.List<Users> ListAuthStatic() {
             var List = new System.Collections.Generic.List<Users>();
@@ -95,7 +94,7 @@ namespace Authentication.Core {
             List.Add(User);
             return List;
         }
-        public static Users isAuthStatic(string username, string password) {
+        public Users isAuthStatic(string username, string password) {
             foreach (var item in ListAuthStatic()) {
                 if (item.username == username && item.password == TM.Core.Encrypt.MD5.CryptoMD5TM(password + item.salt)) {
                     return item;
@@ -103,7 +102,7 @@ namespace Authentication.Core {
             }
             return null;
         }
-        public static string getUserAction() {
+        public string getUserAction() {
             return "," + AuthUser.UserID + "," + AuthUser.username + "," + AuthUser.fullname + ",";
         }
     }
