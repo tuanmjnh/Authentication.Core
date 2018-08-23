@@ -11784,7 +11784,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TM\\.nuget\\packages\\": {},
+    "C:\\Users\\minht\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -11793,14 +11793,14 @@
       "projectUniqueName": "D:\\Applications\\Vinaphone\\Authentication.Core\\Authentication.Core.csproj",
       "projectName": "Authentication.Core",
       "projectPath": "D:\\Applications\\Vinaphone\\Authentication.Core\\Authentication.Core.csproj",
-      "packagesPath": "C:\\Users\\TM\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\minht\\.nuget\\packages\\",
       "outputPath": "D:\\Applications\\Vinaphone\\Authentication.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\TM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\minht\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
