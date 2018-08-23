@@ -19,16 +19,16 @@ namespace Authentication.Core {
         public static void SetAuth(Users Users, List<RolesAcess> Roles = null, List<RolesAcess> AllowRoles = null) {
             try {
                 var options = new CookieOptions() { Expires = DateTime.Now.AddMinutes(30), HttpOnly = true };
-                TM.Core.HttpContext.Current.Http.Response.Cookies.Set(KeyAuth, Users, options);
-                TM.Core.HttpContext.Current.Http.Response.Cookies.Set(KeyRoles, Roles, options);
-                TM.Core.HttpContext.Current.Http.Response.Cookies.Set(KeyAllowRoles, AllowRoles, options);
+                TM.Core.HttpContext.Http.Response.Cookies.Set(KeyAuth, Users, options);
+                TM.Core.HttpContext.Http.Response.Cookies.Set(KeyRoles, Roles, options);
+                TM.Core.HttpContext.Http.Response.Cookies.Set(KeyAllowRoles, AllowRoles, options);
             } catch (Exception) { throw; }
         }
         public static Users AuthUser {
             get {
                 try {
                     //return Newtonsoft.Json.JsonConvert.DeserializeObject<Users>(TMAppContext.Http.Session.Get<string>(SessionAuth));
-                    return TM.Core.HttpContext.Current.Http.Request.Get<Users>(KeyAuth);
+                    return TM.Core.HttpContext.Http.Request.Get<Users>(KeyAuth);
                 } catch (Exception) { return null; }
             }
         }
@@ -36,7 +36,7 @@ namespace Authentication.Core {
             get {
                 try {
                     //return Newtonsoft.Json.JsonConvert.DeserializeObject<List<RolesAcess>>(TMAppContext.Http.Session.Get<string>(SessionRoles));
-                    return TM.Core.HttpContext.Current.Http.Request.Get<List<RolesAcess>>(KeyRoles);
+                    return TM.Core.HttpContext.Http.Request.Get<List<RolesAcess>>(KeyRoles);
                 } catch (Exception) { return null; }
             }
         }
@@ -44,7 +44,7 @@ namespace Authentication.Core {
             get {
                 try {
                     //return Newtonsoft.Json.JsonConvert.DeserializeObject<List<RolesAcess>>(TMAppContext.Http.Session.Get<string>(SessionAllowRoles));
-                    return TM.Core.HttpContext.Current.Http.Request.Get<List<RolesAcess>>(KeyAllowRoles);
+                    return TM.Core.HttpContext.Http.Request.Get<List<RolesAcess>>(KeyAllowRoles);
                 } catch (Exception) { return null; }
             }
         }
@@ -52,7 +52,7 @@ namespace Authentication.Core {
             get {
                 try {
                     //var a = TM.Core.Helper.TMAppContext.HttpHelper.HttpContext.Session.Get<string>("Authentication");
-                    if (TM.Core.HttpContext.Current.Http.Request.Get<Users>(KeyAuth) != null)
+                    if (TM.Core.HttpContext.Http.Request.Get<Users>(KeyAuth) != null)
                         return true;
                     return false;
                 } catch (Exception) { return false; }
@@ -69,7 +69,7 @@ namespace Authentication.Core {
             return false;
         }
         public static void Logout() {
-            try { TM.Core.HttpContext.Current.Http.Response.Remove(KeyAuth); } catch (Exception) { throw; }
+            try { TM.Core.HttpContext.Http.Response.Remove(KeyAuth); } catch (Exception) { throw; }
         }
         private static System.Collections.Generic.List<Users> ListAuthStatic() {
             var List = new System.Collections.Generic.List<Users>();
