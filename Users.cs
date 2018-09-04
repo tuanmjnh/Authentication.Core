@@ -6,13 +6,13 @@
     [Table("Users")]
     public partial class Users {
         [Dapper.Contrib.Extensions.ExplicitKey]
-        public string UserID { get; set; }
+        public string user_id { get; set; }
 
         [StringLength(128)]
-        public string parentId { get; set; }
+        public string parent_id { get; set; }
 
         [StringLength(512)]
-        public string groupId { get; set; }
+        public string group_id { get; set; }
 
         [StringLength(128)]
         public string username { get; set; }
@@ -24,7 +24,7 @@
         public string salt { get; set; }
 
         [StringLength(256)]
-        public string fullname { get; set; }
+        public string full_name { get; set; }
 
         [StringLength(128)]
         public string mobile { get; set; }
@@ -46,19 +46,18 @@
         public string roles { get; set; }
 
         [StringLength(128)]
-        public string createdBy { get; set; }
-        public DateTime? createdAt { get; set; }
+        public string created_by { get; set; }
+        public DateTime? created_at { get; set; }
 
         [StringLength(128)]
-        public string updatedBy { get; set; }
-        public DateTime? updatedAt { get; set; }
+        public string updated_by { get; set; }
+        public DateTime? updated_at { get; set; }
 
         [StringLength(128)]
-        public string deletedBy { get; set; }
-        public DateTime? deletedAt { get; set; }
-        public DateTime? lastlogin { get; set; }
-        public DateTime? lastChangePassword { get; set; }
+        public string deleted_by { get; set; }
+        public DateTime? deleted_at { get; set; }
+        public DateTime? last_login { get; set; }
+        public DateTime? last_change_password { get; set; }
         public int flag { get; set; }
-        public string extras { get; set; }
     }
 }

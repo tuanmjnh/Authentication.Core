@@ -75,22 +75,21 @@ namespace Authentication.Core {
             var List = new System.Collections.Generic.List<Users>();
             var User = new Users();
             //tuanmjnh
-            User.UserID = "f4191f702c4a442ea62db4b6833b33f4".ToUpper();
+            User.user_id = "f4191f702c4a442ea62db4b6833b33f4".ToUpper();
             User.username = "tuanmjnh";
             User.password = "aa2de065c899d53d7031b0975c56062f"; //"Tuanmjnh@tm"; //"fc44d0279133a2f46178134ce9bf2167";//tuanmjnh@123
             User.salt = "1c114c58-69d9-41e6-bd3e-363906e04e50";
-            User.fullname = "SuperAdmin";
+            User.full_name = "SuperAdmin";
             User.mobile = "0123456789";
             User.email = "tuanmjnh@SuperAdmin.com";
             User.address = "SuperAdmin";
-            User.roles = Roles.superadmin;
-            User.createdBy = "f4191f70-2c4a-442e-a62d-b4b6833b33f4";
-            User.createdAt = DateTime.Now;
-            User.updatedBy = "f4191f70-2c4a-442e-a62d-b4b6833b33f4";
-            User.updatedAt = DateTime.Now;
-            User.lastlogin = DateTime.Now;
+            User.roles = RolesOptions.superadmin;
+            User.created_by = "admin";
+            User.created_at = DateTime.Now;
+            User.updated_by = "admin";
+            User.updated_at = DateTime.Now;
+            User.last_login = DateTime.Now;
             User.flag = 1;
-            User.extras = null;
             //Add User to list
             List.Add(User);
             return List;
@@ -104,7 +103,7 @@ namespace Authentication.Core {
             return null;
         }
         public static string getUserAction() {
-            return "," + AuthUser.UserID + "," + AuthUser.username + "," + AuthUser.fullname + ",";
+            return "," + AuthUser.user_id + "," + AuthUser.username + "," + AuthUser.full_name + ",";
         }
     }
 }

@@ -1,7 +1,14 @@
 ﻿namespace Authentication.Core {
     using System.ComponentModel.DataAnnotations.Schema;
-    [Table ("Roles")]
+    [Table ("roles")]
     public partial class Roles {
+        [Dapper.Contrib.Extensions.Key]
+        public int role_id { get; set; }
+        public string user_id { get; set; }
+        public string role_key { get; set; }
+        public string role_value { get; set; }
+    }
+    public partial class RolesOptions {
         //public string TABLE_CATALOG { get; set; }
 
         public enum RoleMethod {
