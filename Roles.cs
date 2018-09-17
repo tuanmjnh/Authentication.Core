@@ -1,12 +1,19 @@
 ﻿namespace Authentication.Core {
+    using System;
     using System.ComponentModel.DataAnnotations.Schema;
     [Table ("roles")]
     public partial class Roles {
         [Dapper.Contrib.Extensions.Key]
         public int role_id { get; set; }
-        public string user_id { get; set; }
+        public string role_name { get; set; }
         public string role_key { get; set; }
         public string role_value { get; set; }
+        public string created_by { get; set; }
+        public DateTime? created_at { get; set; }
+        public string updated_by { get; set; }
+        public DateTime? updated_at { get; set; }
+        public string deleted_by { get; set; }
+        public DateTime? deleted_at { get; set; }
     }
     public partial class RolesOptions {
         //public string TABLE_CATALOG { get; set; }
