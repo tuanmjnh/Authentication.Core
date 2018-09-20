@@ -6,7 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.4" />
     <!-- <PackageReference Include="Dapper.Contrib" Version="1.50.4" /> -->
-    <ProjectReference Include="..\..\TM.Core\TM.Core.csproj" />
+    <ProjectReference Include="..\TM.Core\TM.Core.csproj" />
     <!-- <Folder Include="Extensions\" />
     <Reference Include="Dapper.Contrib">
       <HintPath>Extensions\Dapper.Contrib.dll</HintPath>

@@ -11739,8 +11739,8 @@
     },
     "TM.Core/1.0.0": {
       "type": "project",
-      "path": "../../TM.Core/TM.Core.csproj",
-      "msbuildProject": "../../TM.Core/TM.Core.csproj"
+      "path": "../TM.Core/TM.Core.csproj",
+      "msbuildProject": "../TM.Core/TM.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11757,11 +11757,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Applications\\Vinaphone\\Authentication.Core\\Authentication.Core.csproj",
+      "projectUniqueName": "d:\\Applications\\Authentication.Core\\Authentication.Core.csproj",
       "projectName": "Authentication.Core",
-      "projectPath": "D:\\Applications\\Vinaphone\\Authentication.Core\\Authentication.Core.csproj",
+      "projectPath": "d:\\Applications\\Authentication.Core\\Authentication.Core.csproj",
       "packagesPath": "C:\\Users\\TM\\.nuget\\packages\\",
-      "outputPath": "D:\\Applications\\Vinaphone\\Authentication.Core\\obj\\",
+      "outputPath": "d:\\Applications\\Authentication.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11780,8 +11780,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\Applications\\TM.Core\\TM.Core.csproj": {
-              "projectPath": "D:\\Applications\\TM.Core\\TM.Core.csproj"
+            "d:\\Applications\\TM.Core\\TM.Core.csproj": {
+              "projectPath": "d:\\Applications\\TM.Core\\TM.Core.csproj"
             }
           }
         }
