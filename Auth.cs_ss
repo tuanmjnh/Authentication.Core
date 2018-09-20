@@ -1,0 +1,110 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using TM.Core.Helper;
+namespace Authentication.Core {
+    public class Auth {
+        private const string SessionAuth = "Authentication";
+        private const string SessionRoles = "Roles";
+        private const string SessionAllowRoles = "AllowRoles";
+        public const string API = "API";
+        //private static Models.Users AuthAccount;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public Auth(IHttpContextAccessor httpContextAccessor) {
+            _httpContextAccessor = httpContextAccessor;
+        }
+        public static Users SetAuth(Users Users, List<RolesAcess> Roles = null, List<RolesAcess> AllowRoles = null) {
+            try {
+                TMAppContext.Http.Session.Set(SessionAuth, Users);
+                TMAppContext.Http.Session.Set(SessionRoles, Roles);
+                TMAppContext.Http.Session.Set(SessionAllowRoles, AllowRoles);
+                return Users;
+            } catch (Exception) { throw; }
+        }
+        public static Users AuthUser {
+            get {
+                try {
+                    //return Newtonsoft.Json.JsonConvert.DeserializeObject<Users>(TMAppContext.Http.Session.Get<string>(SessionAuth));
+                    return TMAppContext.Http.Session.Get<Users>(SessionAuth);
+                } catch (Exception) { return null; }
+            }
+        }
+        public static List<RolesAcess> AuthRoles {
+            get {
+                try {
+                    //return Newtonsoft.Json.JsonConvert.DeserializeObject<List<RolesAcess>>(TMAppContext.Http.Session.Get<string>(SessionRoles));
+                    return TMAppContext.Http.Session.Get<List<RolesAcess>>(SessionRoles);
+                } catch (Exception) { return null; }
+            }
+        }
+        public static List<RolesAcess> AuthAllowRoles {
+            get {
+                try {
+                    //return Newtonsoft.Json.JsonConvert.DeserializeObject<List<RolesAcess>>(TMAppContext.Http.Session.Get<string>(SessionAllowRoles));
+                    return TMAppContext.Http.Session.Get<List<RolesAcess>>(SessionAllowRoles);
+                } catch (Exception) { return null; }
+            }
+        }
+        public static bool isAuth {
+            get {
+                try {
+                    //var a = TM.Core.Helper.TMAppContext.HttpHelper.HttpContext.Session.Get<string>("Authentication");
+                    if (TMAppContext.Http.Session.Get<Users>(SessionAuth) != null)
+                        return true;
+                    return false;
+                } catch (Exception) { return false; }
+            }
+        }
+        //public static Models.Users GetAuth()
+        //{
+        //    return Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Users>(AppHttpContext.Current.Session.Get<string>(SessionAuth));
+        //    //return AuthAccount;
+        //}
+        public static bool inRoles(string[] r) {
+            if (r.Contains(AuthUser.roles))
+                return true;
+            return false;
+        }
+        public static void Logout() {
+            try { TMAppContext.Http.Session.Remove(SessionAuth); } catch (Exception) { throw; }
+        }
+        private static System.Collections.Generic.List<Users> ListAuthStatic() {
+            var List = new System.Collections.Generic.List<Users>();
+            var User = new Users();
+            //tuanmjnh
+            User.UserID = "f4191f702c4a442ea62db4b6833b33f4".ToUpper();
+            User.username = "tuanmjnh";
+            User.password = "aa2de065c899d53d7031b0975c56062f"; //"Tuanmjnh@tm"; //"fc44d0279133a2f46178134ce9bf2167";//tuanmjnh@123
+            User.salt = "1c114c58-69d9-41e6-bd3e-363906e04e50";
+            User.fullname = "SuperAdmin";
+            User.mobile = "0123456789";
+            User.email = "tuanmjnh@SuperAdmin.com";
+            User.address = "SuperAdmin";
+            User.roles = Roles.superadmin;
+            User.createdBy = "f4191f70-2c4a-442e-a62d-b4b6833b33f4";
+            User.createdAt = DateTime.Now;
+            User.updatedBy = "f4191f70-2c4a-442e-a62d-b4b6833b33f4";
+            User.updatedAt = DateTime.Now;
+            User.lastlogin = DateTime.Now;
+            User.flag = 1;
+            User.extras = null;
+            //Add User to list
+            List.Add(User);
+            return List;
+        }
+        public static Users isAuthStatic(string username, string password) {
+            foreach (var item in ListAuthStatic()) {
+                if (item.username == username && item.password == TM.Core.Encrypt.MD5.CryptoMD5TM(password + item.salt)) {
+                    return item;
+                }
+            }
+            return null;
+        }
+        public static string getUserAction() {
+            return "," + AuthUser.UserID + "," + AuthUser.username + "," + AuthUser.fullname + ",";
+        }
+    }
+}
