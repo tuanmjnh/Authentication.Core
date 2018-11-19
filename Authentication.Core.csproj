@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="1.50.4" />
-    <!-- <PackageReference Include="Dapper.Contrib" Version="1.50.4" /> -->
+    <PackageReference Include="Dapper" Version="1.50.5" />
+    <!-- <PackageReference Include="Dapper.Contrib" Version="1.50.5" /> -->
     <ProjectReference Include="..\TM.Core\TM.Core.csproj" />
     <!-- <Folder Include="Extensions\" />
     <Reference Include="Dapper.Contrib">
