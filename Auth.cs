@@ -64,9 +64,9 @@ namespace Authentication.Core {
         //    //return AuthAccount;
         //}
         public static bool inRoles(string[] r) {
-            if (r.Contains(AuthUser.roles))
+            //if (r.Contains(AuthUser.roles))
                 return true;
-            return false;
+            //return false;
         }
         public static void Logout() {
             try { TM.Core.HttpContext.Http.Response.Remove(KeyAuth); } catch (Exception) { throw; }
@@ -83,7 +83,6 @@ namespace Authentication.Core {
             User.mobile = "0123456789";
             User.email = "tuanmjnh@SuperAdmin.com";
             User.address = "SuperAdmin";
-            User.roles = RolesOptions.superadmin;
             User.created_by = "admin";
             User.created_at = DateTime.Now;
             User.updated_by = "admin";
