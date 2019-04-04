@@ -18,7 +18,6 @@
         public string address { get; set; }
         public string descs { get; set; }
         public string images { get; set; }
-        public int orders { get; set; }
         public string created_by { get; set; }
         public DateTime? created_at { get; set; }
         public string updated_by { get; set; }
@@ -27,6 +26,8 @@
         public DateTime? deleted_at { get; set; }
         public DateTime? last_login { get; set; }
         public DateTime? last_change_password { get; set; }
+        public int donvi_id { get; set; }
+        public string roles_id { get; set; }
         public int flag { get; set; }
     }
 }

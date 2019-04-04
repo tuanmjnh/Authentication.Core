@@ -8,7 +8,7 @@
         [Dapper.Contrib.Extensions.ExplicitKey]
         public string id { get; set; }
         public string name { get; set; }
-        // public string modules { get; set; }
+        public string roles { get; set; }
         public int orders { get; set; }
         public string descs { get; set; }
         public string created_by { get; set; }
@@ -18,5 +18,6 @@
         public string deleted_by { get; set; }
         public DateTime? deleted_at { get; set; }
         public int flag { get; set; }
+        public string color { get; set; }
     }
 }
