@@ -6,7 +6,7 @@
     [Table("Users")]
     public partial class Users {
         [Dapper.Contrib.Extensions.Key]
-        public string user_id { get; set; }
+        public string id { get; set; }
         public string parent_id { get; set; }
         public string group_id { get; set; }
         public string username { get; set; }
