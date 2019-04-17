@@ -7,7 +7,7 @@
     public partial class DBNguoidung {
         [Dapper.Contrib.Extensions.Key]
         public int nguoidung_id { get; set; }
-        public int donvi_id { get; set; }
+        public int? donvi_id { get; set; }
         public string ma_nd { get; set; }
         public string matkhau { get; set; }
         public string ten_nd { get; set; }
@@ -42,6 +42,7 @@
         public string roles { get; set; }
         public DateTime? last_login { get; set; }
         public DateTime? last_change_pass { get; set; }
+        public string token { get; set; }
     }
     public partial class nguoidung_role {
         public int nguoidung_id { get; set; }
@@ -50,6 +51,7 @@
     }
     public partial class nguoidung_auth : DBNguoidung {
         public string roles { get; set; }
+        public string token { get; set; }
         public DateTime? last_login { get; set; }
         public DateTime? last_change_pass { get; set; }
     }
