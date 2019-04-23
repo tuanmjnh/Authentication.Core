@@ -1,10 +1,12 @@
-﻿namespace Authentication.Core {
+﻿namespace Authentication.Core
+{
     using System.ComponentModel.DataAnnotations.Schema;
     using System.ComponentModel.DataAnnotations;
     using System;
 
     [Table("db_nguoidung")]
-    public partial class DBNguoidung {
+    public partial class DBNguoidung
+    {
         [Dapper.Contrib.Extensions.Key]
         public int nguoidung_id { get; set; }
         public int? donvi_id { get; set; }
@@ -26,33 +28,50 @@
         public DateTime? ngay_sn { get; set; }
         public int loaidv_id { get; set; }
     }
-    public partial class DBnguoidungRoles : DBNguoidung {
+    public partial class DBnguoidungRoles : DBNguoidung
+    {
         public string roles_id { get; set; }
         public string roles_name { get; set; }
         public string color { get; set; }
     }
 
     [Table("nguoidung")]
-    public partial class nguoidung {
+    public partial class nguoidung
+    {
         [Dapper.Contrib.Extensions.ExplicitKey]
         public int nguoidung_id { get; set; }
         public string salt { get; set; }
         public string matkhau { get; set; }
         public string roles_id { get; set; }
-        public string roles { get; set; }
-        public DateTime? last_login { get; set; }
-        public DateTime? last_change_pass { get; set; }
         public string token { get; set; }
+        public DateTime? last_login { get; set; }
+        public string updated_by { get; set; }
+        public DateTime? updated_at { get; set; }
+        public string change_pass_by { get; set; }
+        public DateTime? change_pass_at { get; set; }
+        public string locked_by { get; set; }
+        public DateTime? locked_at { get; set; }
+
     }
-    public partial class nguoidung_role {
+    public partial class nguoidung_role
+    {
         public int nguoidung_id { get; set; }
         public string roles_id { get; set; }
 
     }
-    public partial class nguoidung_auth : DBNguoidung {
+    public partial class nguoidung_auth : DBNguoidung
+    {
+        public string salt { get; set; }
         public string roles { get; set; }
         public string token { get; set; }
         public DateTime? last_login { get; set; }
         public DateTime? last_change_pass { get; set; }
+    }
+    public partial class nguoidung_login
+    {
+        public string ma_nd { get; set; }
+        public string matkhau { get; set; }
+        public bool remember { get; set; }
+        public string token { get; set; }
     }
 }
