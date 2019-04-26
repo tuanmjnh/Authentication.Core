@@ -12,6 +12,7 @@
         public int? donvi_id { get; set; }
         public string ma_nd { get; set; }
         public string matkhau { get; set; }
+        public string giaima_mk { get; set; }
         public string ten_nd { get; set; }
         public int quantri { get; set; }
         public int nhom_nd_id { get; set; }
