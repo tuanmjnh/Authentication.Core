@@ -7,6 +7,8 @@
     public partial class Roles {
         [Dapper.Contrib.Extensions.ExplicitKey]
         public string id { get; set; }
+        public string code { get; set; }
+        public int levels { get; set; }
         public string name { get; set; }
         public string roles { get; set; }
         public int orders { get; set; }
